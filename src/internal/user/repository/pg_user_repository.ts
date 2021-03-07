@@ -17,9 +17,7 @@ export class UserRepository implements IUserRepository {
         this.db = models;
     }
 
-    public async findUserByID(
-        userID: number | string,
-    ): Promise<User | undefined> {
+    public async findOne(userID: number | string): Promise<User | undefined> {
         return this.db.findOne(userID);
     }
 

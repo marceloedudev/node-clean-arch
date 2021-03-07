@@ -1,8 +1,7 @@
-import { IUserRepository, IUserUseCaseExec } from './interface';
-
+import { IUserRepository } from './interface';
 import { User } from '../repository/typeorm_user';
 
-export class DestroyUserUseCase implements IUserUseCaseExec {
+export class DestroyUserUseCase {
     private userRepository: IUserRepository;
 
     constructor(service: IUserRepository) {

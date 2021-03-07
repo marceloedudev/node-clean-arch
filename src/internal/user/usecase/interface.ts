@@ -1,10 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { User } from '../repository/typeorm_user';
 
-export interface IUserUseCaseExec {
-    execute(...request: any): Promise<User | undefined>;
-}
-
 export interface ICreateUserDTO {
     email: string;
     name: string;
@@ -18,7 +14,7 @@ export interface IUpdateUserDTO extends User {
 }
 
 export interface IUserRepository {
-    findUserByID(userID: number | string): Promise<User | undefined>;
+    findOne(userID: number | string): Promise<User | undefined>;
     create(userData: ICreateUserDTO): Promise<User>;
     update(userID: string | number, userData: IUpdateUserDTO): Promise<User>;
     destroy(userID: number | string): Promise<any>;

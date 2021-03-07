@@ -11,7 +11,7 @@ import { User } from '../typeorm_user';
 class UserRepositoryFake implements IUserRepository {
     private users: User[] = [];
 
-    public async findUserByID(userID: number): Promise<User | undefined> {
+    public async findOne(userID: number): Promise<User | undefined> {
         const userFounded = this.users.find(user => user.id == userID);
         return userFounded;
     }

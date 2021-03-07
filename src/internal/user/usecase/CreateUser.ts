@@ -1,11 +1,11 @@
-import { ICreateUserDTO, IUserRepository, IUserUseCaseExec } from './interface';
+import { ICreateUserDTO, IUserRepository } from './interface';
 
 import { User } from '../repository/typeorm_user';
 import { UserEmail } from '../domain/userEmail';
 import { UserName } from '../domain/userName';
 import { UserPassword } from '../domain/userPassword';
 
-export class CreateUserUseCase implements IUserUseCaseExec {
+export class CreateUserUseCase {
     private userRepository: IUserRepository;
 
     constructor(service: IUserRepository) {

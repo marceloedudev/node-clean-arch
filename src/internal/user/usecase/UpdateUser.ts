@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import/order */
-import { IUpdateUserDTO, IUserRepository, IUserUseCaseExec } from './interface';
+import { IUpdateUserDTO, IUserRepository } from './interface';
 
 import BadRequestError from '@/pkg/http_errors/BadRequestError';
 import { User } from '../repository/typeorm_user';
@@ -8,7 +8,7 @@ import { UserEmail } from '../domain/userEmail';
 import { UserName } from '../domain/userName';
 import { UserPassword } from '../domain/userPassword';
 
-export class UpdateUserUseCase implements IUserUseCaseExec {
+export class UpdateUserUseCase {
     private userRepository: IUserRepository;
 
     constructor(service: IUserRepository) {
@@ -19,7 +19,7 @@ export class UpdateUserUseCase implements IUserUseCaseExec {
         userID: string | number,
         { email, name, password }: IUpdateUserDTO,
     ): Promise<User> {
-        const existsUser = await this.userRepository.findUserByID(userID);
+        const existsUser = await this.userRepository.findOne(userID);
 
         if (!existsUser) {
             throw new BadRequestError('User not found');
